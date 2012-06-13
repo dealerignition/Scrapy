@@ -25,13 +25,13 @@ module Scrapy
 
     #returns true if crawling has finished
     #false otherwise
-    def crawling_complete
+    def crawling_complete?
       @completed
     end
 
     #returns true if crawling is currently happening
     #false otherwise
-    def is_crawling
+    def is_crawling?
       @crawling
     end
 
