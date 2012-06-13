@@ -102,7 +102,7 @@ module Scrapy
               end
             else
               div = (webpage/item[:location]).inner_text
-              if div != nil
+              if div != ""
                 map[item[:name]] = div
               else
                 found = false
