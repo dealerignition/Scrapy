@@ -93,7 +93,7 @@ module Scrapy
           map = {}
           found = true
           @classes.each do |item|
-            if item[:type] == 'custom'
+            if item[:type] != 'custom'
               div = webpage.search("body").search("[@#{item[:type]}~='#{item[:location]}']")
               if div.length != 0
                 map[item[:name]] = div[0].inner_text
