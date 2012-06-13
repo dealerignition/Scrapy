@@ -95,6 +95,7 @@ module Scrapy
           end
           
           if found
+            map[:page_url] = url_i
             @located_products << map
           end
         rescue Exception => e
