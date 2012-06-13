@@ -5,6 +5,15 @@ require 'open-uri'
 
 module Scrapy
   class Crawler
+    #initialize
+    #takes a uri of the format http://www.url.com and returns
+    #a Crawler object that is ready to crawl
+    #classes must have the form =>
+    #[{
+    #  :location=>"class/id name | html location (i.e. ul[@class='vehicleDescription']/li[9])",
+    #  :type=>"custom | class | id"
+    #  :name=>"Name"
+    #}]
     def initialize(base_url, classes)
       @classes = classes
       @base_url = base_url
@@ -14,14 +23,20 @@ module Scrapy
       @crawling = false
     end
 
+    #returns true if crawling has finished
+    #false otherwise
     def crawling_complete
       @completed
     end
 
+    #returns true if crawling is currently happening
+    #false otherwise
     def is_crawling
       @crawling
     end
 
+    #returns the list of products retrieved if
+    #crawler has finished, otherwise throws exception
     def retrieve_products
       if @completed
         @located_products
@@ -30,6 +45,7 @@ module Scrapy
       end
     end
 
+    #spawn a new thread to crawl the website using the given rules
     def crawl
       if not @crawling
         @completed = false
